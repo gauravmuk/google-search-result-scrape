@@ -19,7 +19,7 @@ async function run() {
     const page = await browser.newPage();
 
     await page.goto("https://www.google.co.in/");
-    await page.click("#lst-ib");
+    await page.click('[name="q"]');
     await page.keyboard.type(keyword);
     await page.keyboard.down("Enter");
     await page.waitFor(2000);
@@ -32,7 +32,7 @@ async function run() {
 
     for (let i = 1; i <= resultsLength; i++) {
       let heading =
-        "#search > div > div > div > div > div > div:nth-of-type(" + i + ") > div > div > h3 > a";
+        "#search > div > div > div > div > div > div:nth-of-type(" + i + ") > div > div > div > a";
       let href = await page.evaluate($el => {
         return document.querySelector($el).href;
       }, heading);
