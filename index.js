@@ -1,10 +1,10 @@
 const puppeteer = require("puppeteer");
 const fs = require("fs");
 
-async function run() {
+async function run(config) {
   let dataToWrite = 'keyword, url,';
 
-  let data = fs.readFileSync('./input.csv').toString('utf8');
+  let data = fs.readFileSync(config.inputFile).toString('utf8');
   let dataArray = data.split('\n');
 
   for (let k = 1; k < dataArray.length; k++) {
@@ -43,7 +43,7 @@ async function run() {
     console.log(dataToWrite);
   }
 
-  fs.writeFile('output.csv', dataToWrite, 'utf8', (err) => {
+  fs.writeFile(config.outputFile, dataToWrite, 'utf8', (err) => {
     if (err) {
       console.log('Some error occurred, contact Gaurav Nanda');
     } else {
@@ -52,4 +52,7 @@ async function run() {
   });
 }
 
-run();
+run({
+  inputFile: 'input.csv',
+  outputFile: 'output.csv'
+});
