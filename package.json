@@ -10,6 +10,6 @@
   "author": "Gaurav Nanda",
   "license": "ISC",
   "devDependencies": {
-    "puppeteer": "^1.2.0"
+    "puppeteer": "^1.13.0"
   }
 }
